@@ -17,6 +17,28 @@
             <td>{{ $user->email }}</td>
         </tr>
         <tr>
+            <th>Endereço</th>
+            <td>{{ $user->address }}</td>
+        </tr>
+        <tr>
+            <th>Telefone</th>
+            <td>{{ $user->phone }}</td>
+        </tr>
+        <tr>
+            <th>Sexo</th>
+            @if ($user->sex === 0)
+            <td>Masculino</td>
+            @elseif ($user->sex === 1)
+            <td>Feminino</td>
+            @else
+            <td>Outro</td>
+            @endif
+        </tr>
+        <tr>
+            <th>CPF</th>
+            <td>{{ $user->cpf }}</td>
+        </tr>
+        <tr>
             <th>Data de criação</th>
             <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
         </tr>

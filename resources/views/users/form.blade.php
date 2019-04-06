@@ -1,5 +1,5 @@
 <form action="{{ $user->id ? route('users.update', $user) : route('users.store', $user) }}"
-    method="post">
+    method="post" id="userForm">
     @csrf()
     @if($user->id)
         @method('PUT')
@@ -34,6 +34,67 @@
     </div>
 
     <div class="form-group">
+        <label for="address">Endereço *</label>
+
+        <input id="address" type="text"
+        class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+        name="address" value="{{ old('address') ?? $user->address }}" required>
+
+        @if ($errors->has('address'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('address') }}</strong>
+            </span>
+        @endif
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Telefone *</label>
+
+        <input id="phone" type="tel"
+        class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+        name="phone" value="{{ old('phone') ?? $user->phone }}" required>
+
+        @if ($errors->has('phone'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('phone') }}</strong>
+            </span>
+        @endif
+    </div>
+
+    @if (!$user->id)
+    <div class="form-group">
+        <label for="sex">Sexo *</label>
+        <select class="form-control" id="sex" name="sex">
+            <option value="0">Masculino</option>
+            <option value="1">Feminino</option>
+            <option value="2">Outro</option>
+        </select>
+
+        @if ($errors->has('sex'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('sex') }}</strong>
+            </span>
+        @endif
+    </div>
+    @endif
+
+    @if (!$user->id) 
+    <div class="form-group">
+        <label for="cpfInput">CPF *</label>
+
+        <input id="cpfInput" type="text"
+        class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}"
+        name="cpf" value="{{ old('cpf') ?? $user->cpf }}" required>
+
+        @if ($errors->has('cpf'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('cpf') }}</strong>
+            </span>
+        @endif
+    </div>
+    @endif
+
+    <div class="form-group">
         <label for="email">E-mail *</label>
 
         <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
@@ -60,6 +121,6 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">{{ $user->id ? 'Atualizar' : 'Inserir' }}</button>
+        <button class="btn btn-primary" id="userFormBtn">{{ $user->id ? 'Atualizar' : 'Inserir' }}</button>
     </div>
 </form>

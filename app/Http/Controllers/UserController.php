@@ -12,6 +12,10 @@ class UserController extends Controller
     protected $rules = [
         'first_name' => 'required|string|min:3|max:100',
         'last_name' => 'required|string|min:3|max:100',
+        'address' => 'required|string|min:3|max:100',
+        'phone' => 'required|integer|digits_between:11,14',
+        'sex' => 'required|integer|digits:1',
+        'cpf' => 'required|integer|digits:11',
         'email' => 'required|email|unique:users,email',
         'password' => 'required'
     ];
@@ -47,6 +51,10 @@ class UserController extends Controller
             $user = User::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'sex' => $request->sex,
+                'cpf' => $request->cpf,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
             ]);
@@ -89,6 +97,8 @@ class UserController extends Controller
 
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
+            $user->address = $request->address;
+            $user->phone = $request->phone;
             $user->email = $request->email;
 
             if ($request->has('password')) {

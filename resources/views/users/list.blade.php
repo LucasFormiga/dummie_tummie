@@ -1,3 +1,5 @@
+@include('users.modal')
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,10 +16,12 @@
                 <td>{{ $user->full_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <a href="{{ route('users.show', $user) }}">Ver mais</a>
+                    <!--<a href="{{ route('users.show', $user) }}" id="showMore" value="{{ $user->id }}">Ver mais</a>-->
+                    <button type="button" class="btn btn-link showMoreBtn" value="{{ $user->id }}">Ver mais</button>
                     &nbsp; &nbsp;
-                    <a href="#" class="text-danger"
-                           onclick="event.preventDefault(); document.getElementById('removeUser{{$user->id}}').submit()">Deletar</a>
+                    <button type="button" class="btn btn-link text-danger" id="deleteBtn" value="{{ $user->id }}">Deletar</button>
+                    <!--<a href="#" class="text-danger"
+                           onclick="event.preventDefault(); document.getElementById('removeUser{{$user->id}}').submit()">Deletar</a>-->
                     <form action="{{ route("users.destroy", $user) }}"
                           method="post"
                           id="removeUser{{$user->id}}">
