@@ -1,6 +1,6 @@
 @include('users.modal')
 
-<table class="table table-striped">
+<table class="table table-striped" id="dataTableUserList">
     <thead>
         <tr>
             <th scope="col">#</th>

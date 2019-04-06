@@ -138,3 +138,16 @@ for (let i = 0; i < showMoreBtn.length; i++) {
         await showMore(showMoreBtn[i].value);
     });
 }
+
+// ---------------------------------- //
+//                             Data Tables                           //
+// ---------------------------------- //
+$(document).ready(() => {
+    $("#dataTableUserList").DataTable({
+        paging: false,
+        pageLength: false,
+        language: {
+            search: "Pesquisar nesta tabela:"
+        }
+    });
+});
