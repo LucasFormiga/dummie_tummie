@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Logs;
+use Auth;
+use Request;
 
 class LoginController extends Controller
 {
@@ -35,5 +39,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function log() {
+        try {
+            DB::beginTransaction();
+
+            $logs = Logs::create([
+                'email' => Auth::user()->email,
+                'user_agent' => Request::userAgent(),
+                'ip' => Request::ip(),
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
     }
 }

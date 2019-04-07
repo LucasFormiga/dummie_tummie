@@ -164,3 +164,37 @@ $(document).ready(() => {
         }
     });
 });
+
+// ---------------------------------- //
+//                Delete Confirmation                      //
+// ---------------------------------- //
+const deleteBtn = document.getElementById("deleteBtn");
+
+function deleteUser(user) {
+    swal({
+        title: "Você tem Certeza?",
+        text:
+            "Uma vez deletado, não há como restaurar! Pense direitinho, jovem padawan :)",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then(willDelete => {
+        if (willDelete) {
+            let deleteAxios = axios
+                .post(
+                    "/api/users/" + deleteBtn.value + "/destroy?token=" + token
+                )
+                .then(() => {
+                    swal("O usuário foi deletado :)", {
+                        icon: "success"
+                    }).then(
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000)
+                    );
+                });
+        } else {
+            swal("Ufa! Ainda bem que você desistiu.");
+        }
+    });
+}

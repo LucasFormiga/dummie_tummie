@@ -19,7 +19,7 @@
                     <!--<a href="{{ route('users.show', $user) }}" id="showMore" value="{{ $user->id }}">Ver mais</a>-->
                     <button type="button" class="btn btn-link" value="{{ $user->id }}" onclick="event.preventDefault(); showMore({{ $user->id }});">Ver mais</button>
                     &nbsp; &nbsp;
-                    <button type="button" class="btn btn-link text-danger" id="deleteBtn" value="{{ $user->id }}">Deletar</button>
+                    <button type="button" class="btn btn-link text-danger" id="deleteBtn" value="{{ $user->id }}" onclick="event.preventDefault(); deleteUser({{ $user->id }});">Deletar</button>
                     <!--<a href="#" class="text-danger"
                            onclick="event.preventDefault(); document.getElementById('removeUser{{$user->id}}').submit()">Deletar</a>-->
                     <form action="{{ route("users.destroy", $user) }}"
