@@ -4,14 +4,61 @@
 *   Github Repo: https://github.com/LucasFormiga/dummie_tummie
 */
 
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+
 body {
     background-color: rgba(241, 242, 246, 1);
+}
+
+/* ---------------------------------- */
+/*                                   Navbar                               */
+/* ---------------------------------- */
+.navbar {
+    height: 100px;
+}
+
+.navbar-brand {
+    font-family: "Pacifico", cursive;
+}
+
+/* ---------------------------------- */
+/*                               Breadcrumb                          */
+/* ---------------------------------- */
+.breadcrumb {
+    border-width: 0;
+    box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 /* ---------------------------------- */
 /*                                    Cards                                 */
 /* ---------------------------------- */
 .card-home {
+    border-width: 0;
+    box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
+}
+
+.card-index {
+    border-width: 0;
+    box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
+}
+
+.card-edit {
+    border-width: 0;
+    box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
+}
+
+.card-create {
+    border-width: 0;
+    box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
+}
+
+.card-login {
+    border-width: 0;
+    box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
+}
+
+.card-reset {
     border-width: 0;
     box-shadow: 0px 4px 10px rgba(223, 228, 234, 1);
 }

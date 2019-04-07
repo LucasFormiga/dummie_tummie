@@ -7,12 +7,10 @@
             {{ Breadcrumbs::render('users') }}
         </div>
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-index">
                 <div class="card-header">
-                    <span>Usuários</span>
-
                     <div class="float-right">
-                        <a href="{{ route('users.create') }}" class="btn btn-secondary">Novo</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-secondary"><i class="fa fa-plus"></i> Novo</a>
                     </div>
                 </div>
 

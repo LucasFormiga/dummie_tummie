@@ -7,7 +7,7 @@
             {{ Breadcrumbs::render('users.create') }}
         </div>
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-create">
                 <div class="card-body">
                     @include('users.form')
                 </div>

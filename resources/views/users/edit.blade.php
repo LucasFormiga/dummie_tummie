@@ -7,7 +7,7 @@
             {{ Breadcrumbs::render('users.edit', $user) }}
         </div>
         <div class="col-md-12">
-            <div class="card">
+            <div class="card card-edit">
                 <div class="card-header">
                     <span>{{ $user->full_name }}</span>
                 </div>

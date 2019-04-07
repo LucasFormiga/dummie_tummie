@@ -54,8 +54,8 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <a href="#" class="btn btn-primary"  id="userViewModal-editBtn">Editar</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times-circle"></i> Fechar</button>
+        <a href="#" class="btn btn-primary"  id="userViewModal-editBtn"><i class="fa fa-pen"></i> Editar</a>
       </div>
     </div>
   </div>

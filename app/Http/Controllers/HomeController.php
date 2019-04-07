@@ -30,8 +30,8 @@ class HomeController extends Controller
         $men = 0;
         $women = 0;
         $other = 0;
-        $logs = Logs::all();
-        $userLogs = Logs::where('email', '=', Auth::user()->email)->get();
+        $logs = Logs::limit(5)->get();
+        $userLogs = Logs::where('email', '=', Auth::user()->email)->limit(5)->get();
         $users = User::select('sex')->get();
 
         foreach ($users as $u) {
