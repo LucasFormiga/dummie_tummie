@@ -1,18 +1,36 @@
-// Utils
+var token;
+
+const axiosLogin = axios
+    .get("/api/login", {
+        params: {
+            email: "candidato@eskive.tech",
+            password: "123"
+        }
+    })
+    .then(response => {
+        token = response.data.data.token;
+    });
+
+// ---------------------------------- //
+//                                    Utils                                 //
+// ---------------------------------- //
 function addClassToElement(c, e) {
     if (!e.classList.contains(c)) e.classList.add(c);
 }
 
 function formatCpf(cpf) {
-    cpf = cpf.replace(/\D/g, "");
-    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
-    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
-    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    cpf = cpf
+        .replace(/\D/g, "")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
 
     return cpf;
 }
 
-// Validação de CPF
+// ---------------------------------- //
+//                                      CPF                                   //
+// ---------------------------------- //
 const userForm = document.getElementById("userForm");
 const userFormBtn = document.getElementById("userFormBtn");
 const cpf = document.getElementById("cpfInput");
@@ -64,14 +82,15 @@ if (userFormBtn != undefined) {
             return false;
         }
 
+        cpf.value = Number(strCPF);
         cpf.classList.remove("is-invalid");
         userForm.submit();
     };
 }
+
 // ---------------------------------- //
 //                             Modal Users                           //
 // ---------------------------------- //
-const showMoreBtn = document.getElementsByClassName("showMoreBtn");
 const userModalEditBtn = document.getElementById("userViewModal-editBtn");
 const userModalTitle = document.getElementById("userViewModal-title");
 const userModalTableId = document.getElementById("userViewModal-table-id");
@@ -125,17 +144,10 @@ async function setupModal(response) {
 }
 
 async function showMore(user) {
-    const query = axios.get("/api/users/" + user + "/show");
+    const query = axios.get("/api/users/" + user + "/show?token=" + token);
     query.then(async res => {
         let response = res.data.data;
         await setupModal(response);
-    });
-}
-
-for (let i = 0; i < showMoreBtn.length; i++) {
-    showMoreBtn[i].addEventListener("click", async e => {
-        e.preventDefault();
-        await showMore(showMoreBtn[i].value);
     });
 }
 
@@ -146,6 +158,7 @@ $(document).ready(() => {
     $("#dataTableUserList").DataTable({
         paging: false,
         pageLength: false,
+        info: false,
         language: {
             search: "Pesquisar nesta tabela:"
         }

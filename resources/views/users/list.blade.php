@@ -17,7 +17,7 @@
                 <td>{{ $user->email }}</td>
                 <td>
                     <!--<a href="{{ route('users.show', $user) }}" id="showMore" value="{{ $user->id }}">Ver mais</a>-->
-                    <button type="button" class="btn btn-link showMoreBtn" value="{{ $user->id }}">Ver mais</button>
+                    <button type="button" class="btn btn-link" value="{{ $user->id }}" onclick="event.preventDefault(); showMore({{ $user->id }});">Ver mais</button>
                     &nbsp; &nbsp;
                     <button type="button" class="btn btn-link text-danger" id="deleteBtn" value="{{ $user->id }}">Deletar</button>
                     <!--<a href="#" class="text-danger"
