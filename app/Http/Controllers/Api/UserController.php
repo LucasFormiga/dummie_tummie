@@ -143,29 +143,4 @@ class UserController extends Controller
             ]
         ]);
     }
-
-    /**
-     * Logout
-     * Invalidate the token. User have to relogin to get a new token.
-     * @param Request $request 'header'
-     */
-    public function logout(Request $request) 
-    {
-        // Get JWT Token from the request header key "Authorization"
-        $token = $request->header('Authorization');
-        // Invalidate the token
-        try {
-            JWTAuth::invalidate($token);
-            return response()->json([
-                'status' => 'success', 
-                'message'=> "Usuário saiu com sucesso."
-            ]);
-        } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
-            return response()->json([
-              'status' => 'error', 
-              'message' => 'Falha ao tentar sair, tente novamente.'
-            ], 500);
-        }
-    }
 }

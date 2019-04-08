@@ -121,6 +121,6 @@
     </div>
 
     <div class="form-group">
-        <button class="btn btn-primary btn-block" id="userFormBtn">{{ $user->id ? 'Atualizar' : 'Inserir' }}</button>
+        <button {{ $user->id ? 'type=submit' : ''}} class="btn btn-primary btn-block" {{ $user->id ? '' : 'id=userFormBtn' }}>{{ $user->id ? 'Atualizar' : 'Inserir' }}</button>
     </div>
 </form>

@@ -1,11 +1,9 @@
 var token;
 
 const axiosLogin = axios
-    .get("/api/login", {
-        params: {
-            email: "candidato@eskive.tech",
-            password: "123"
-        }
+    .post("/api/login", {
+        email: "candidato@eskive.tech",
+        password: "123"
     })
     .then(response => {
         token = response.data.data.token;
@@ -45,7 +43,7 @@ if (cpf != undefined) {
     };
 }
 
-if (userFormBtn != undefined) {
+if (userFormBtn != undefined && cpf != undefined) {
     userFormBtn.onclick = e => {
         e.preventDefault();
 
